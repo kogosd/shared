@@ -18,11 +18,19 @@ def validate(k,n, N):
     assert(abs(cos2)<=1)
     print(f"k={k:5} n={n:5} a1={a1:.3f},b1={b1:.3f},cos1={cos1:.3f},N1={a1*b1*4/sqrt(3)}   a2={a2:.3f},b2={b2:.3f},cos2={cos2:.3f},N2={a2*b2*4/sqrt(3)}")
     if not isclosetoany(abs(cos1), 0.5,sqrt(3)/2,0,1):
-    clear()
-    draw_rectangle(0,0, 0,-b1, -a1, -b1, -a1, 0)
-    draw_triangles_along_line(-a1/n,0, 0, -b1/k, N)
-    draw_triangles_along_line(-2*a1/n,0, 0, -2*b1/k, N)    
-    wait()
+        clear()
+        draw_title(str(N))
+        draw_rectangle(0,0, 0,-b1, -a1, -b1, -a1, 0)
+        draw_triangles_along_line(-a1/n,0, 0, -b1/k, N)
+        draw_triangles_along_line(-2*a1/n,0, 0, -2*b1/k, N)  
+        wait  
+    if not isclosetoany(abs(cos2), 0.5,sqrt(3)/2,0,1):
+        clear()
+        draw_title(str(N))        
+        draw_rectangle(0,0, 0,-b2, -a2, -b2, -a2, 0)
+        draw_triangles_along_line(-a2/n,0, 0, -b2/k, N)
+        draw_triangles_along_line(-2*a2/n,0, 0, -2*b2/k, N)    
+        wait()
     return cos1, cos2
 
 
