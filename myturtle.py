@@ -2,16 +2,25 @@ from math import *
 from this import d
 import turtle
 
-TURTLE = False
+TURTLE = True
 sqrt3= sqrt(3.)
-if TURTLE: board = turtle.Turtle()
+if TURTLE: 
+    board = turtle.Turtle()
+    board.speed(0)    
 scale=100
 EPSILON = 1e-8
-turtle.speed(0)
+
 
 def clear():
     if TURTLE==False: return    
     board.reset()
+
+def draw_title(s):
+    if TURTLE==False: return
+    board.penup()
+    board.goto(0, 5*scale)
+    board.pendown()
+    board.write(s)
 
 def draw_triangle(x,y, slope=0):
     if TURTLE==False: return
@@ -40,6 +49,7 @@ def draw_triangle_from_current(x,y, slope=0):
 
 def draw_rectangle(x,y, x1,y1, x2,y2, x3,y3):
     if TURTLE==False: return    
+    board.pensize(2)
     board.penup()
     board.goto(x*scale, y*scale)
     board.pendown()
@@ -47,6 +57,7 @@ def draw_rectangle(x,y, x1,y1, x2,y2, x3,y3):
     board.goto(x2*scale,y2*scale)
     board.goto(x3*scale,y3*scale)
     board.goto(x*scale,y*scale)
+    board.pensize(1)
 
 def draw_line(x1,y1, x2,y2):
     if TURTLE==False: return    
