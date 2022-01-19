@@ -2,7 +2,7 @@ from math import *
 from this import d
 import turtle
 
-TURTLE = True
+TURTLE = False
 sqrt3= sqrt(3.)
 if TURTLE: 
     board = turtle.Turtle()

@@ -190,3 +190,72 @@ def F(N):
 
     n_sol += parallel(N)
     return n_sol
+
+
+def travel_check(b_over_cos, k, m):
+    if m == k:
+        return not int (b_over_cos + 0.5 * 1.e-8) < x + y - 1e-08
+
+    if m < k:
+        hor_line = b_over_cos
+        dist_d = {}
+
+        for ll in range(m + k -1, 0, -1):
+
+            cnt = 1
+
+            l = ll
+
+            while l != 0 and l not in dist_d:
+
+                dist_d[l] = hor_line * cnt
+
+                cnt += 1
+
+                l += m
+
+                if l >= k:
+
+                    l = l - k
+
+            dist_val = hor_line * (cnt - 1) - (dist_d[l] if l > 0 else 0)
+
+            if int(dist_val + 0.5 * 1.e-8) < dist_val - 1e-08:
+
+                return False
+
+        return True
+
+    else:
+
+        hor_line = b_over_cos
+
+        dist_d = {}
+
+        for ll in range(m - 1, 0, -1):
+
+            cnt = 1
+
+            l = ll
+
+            while l != 0 and l not in dist_d:
+
+                dist_d[l] = hor_line * cnt
+
+                cnt += 1
+
+                l += k
+
+                if l >= m:
+
+                    l = l - m
+
+
+
+            dist_val = hor_line * (cnt - 1)- (dist_d[l] if l > 0 else 0)
+
+            if int(dist_val + 0.5 * 1.e-8) < dist_val - 1e-08:
+
+                return False
+
+        return True
