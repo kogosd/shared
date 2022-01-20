@@ -45,7 +45,7 @@ def validate(k,n, N):
 
 
 def isclose(x,y):
-    return fabs(x-y) < 1e-8
+    return fabs(x-y) < 1e-6
 
 def isclosetoany(x,*y):
     for elm in y:
@@ -91,17 +91,17 @@ def alt2(N):
         P*=(v+1)
     return P*16
 
-
-G = 0
-G_ALT = 0
-NMIN=1
-NMAX=int(sys.argv[1])
-TURTLE=False
-for N in range(NMIN, NMAX+1):
-    n_sol = F(N)
-    G_ALT += alt(N) + parallel(N)
-    G += n_sol    
+if __name__ == '__main__':
+    G = 0
+    G_ALT = 0
+    NMIN=1
+    NMAX=int(sys.argv[1])
+    TURTLE=False
+    for N in range(NMIN, NMAX+1):
+        n_sol = F(N)
+        G_ALT += alt(N) + parallel(N)
+        G += n_sol    
+        print("f for {:5} is {:5}, parallel={:5} alt={:5} G_ALT={:5} G={:5}".format(N, n_sol, parallel(N), alt(N)+parallel(N), G_ALT, G))
     print("f for {:5} is {:5}, parallel={:5} alt={:5} G_ALT={:5} G={:5}".format(N, n_sol, parallel(N), alt(N)+parallel(N), G_ALT, G))
-print("f for {:5} is {:5}, parallel={:5} alt={:5} G_ALT={:5} G={:5}".format(N, n_sol, parallel(N), alt(N)+parallel(N), G_ALT, G))
 
-wait()
+    wait()
